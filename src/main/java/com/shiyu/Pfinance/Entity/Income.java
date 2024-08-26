@@ -1,11 +1,14 @@
 package com.shiyu.Pfinance.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
+@Data
 public class Income {
 
     @Id
@@ -20,6 +23,7 @@ public class Income {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private User user;
 
 

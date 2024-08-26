@@ -2,8 +2,11 @@ package com.shiyu.Pfinance.Service;
 
 import com.shiyu.Pfinance.Entity.Expense;
 import com.shiyu.Pfinance.Entity.Income;
+import com.shiyu.Pfinance.Entity.User;
+import com.shiyu.Pfinance.Exception.UserNotFoundException;
 import com.shiyu.Pfinance.Repository.ExpenseRepository;
 import com.shiyu.Pfinance.Repository.IncomeRepository;
+import com.shiyu.Pfinance.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +14,9 @@ import java.util.List;
 
 @Service
 public class FinancialService {
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private IncomeRepository incomeRepository;
@@ -27,6 +33,8 @@ public class FinancialService {
     }
 
     public Income addIncome(Income income) {
+        User user = userRepository.findById(income.getUser().getId())
+                .orElseThrow(() -> new UserNotFoundException("User with given ID does not exist"));
         return incomeRepository.save(income);
     }
 

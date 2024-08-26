@@ -1,10 +1,17 @@
 package com.shiyu.Pfinance.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -18,9 +25,11 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Income> incomes;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Expense> expenses;
 
 }
