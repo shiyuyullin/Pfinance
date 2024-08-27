@@ -6,6 +6,7 @@ import com.shiyu.Pfinance.dto.RegistrationRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,8 +21,8 @@ public class AuthService {
         User user = new User();
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
-        //TODO: password encryption
+        String encodedPassword = new BCryptPasswordEncoder().encode(request.getPassword());
+        user.setPassword(encodedPassword);
         userRepository.save(user);
         return "User registered";
     }

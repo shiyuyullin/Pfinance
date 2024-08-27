@@ -24,6 +24,8 @@ public class User {
 
     private String email;
 
+    private String role; // eg. ADMIN,USER
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Income> incomes;
