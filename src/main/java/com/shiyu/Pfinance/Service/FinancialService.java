@@ -8,6 +8,7 @@ import com.shiyu.Pfinance.Repository.ExpenseRepository;
 import com.shiyu.Pfinance.Repository.IncomeRepository;
 import com.shiyu.Pfinance.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,6 +43,7 @@ public class FinancialService {
         return expenseRepository.save(expense);
     }
 
+    @Cacheable(value = "incomesByMonth", key = "#month + '-' + #year")
     public List<Income> getIncomesByYearAndMonth(int month, int year){
         return incomeRepository.findByMonthAndYear(month, year);
     }
