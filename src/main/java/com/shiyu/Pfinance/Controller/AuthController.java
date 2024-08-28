@@ -26,10 +26,10 @@ public class AuthController {
     }
 
 
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest request){
-        return authService.loginUser(request);
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity<String> login(@RequestBody LoginRequest request){
+//        return authService.loginUser(request);
+//    }
 
 
 }

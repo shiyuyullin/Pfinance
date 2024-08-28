@@ -25,6 +25,11 @@ public class FinancialController {
         return financialService.getExpensesByUser(userId);
     }
 
+    @GetMapping("/incomes/by-month")
+    public List<Income> getIncomesByYearAndMonth(@RequestParam int month, @RequestParam int year){
+        return financialService.getIncomesByYearAndMonth(month, year);
+    }
+
     @PostMapping("/income")
     public Income addIncome(@RequestBody Income income) {
         return financialService.addIncome(income);
