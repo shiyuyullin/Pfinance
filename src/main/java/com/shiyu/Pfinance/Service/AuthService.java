@@ -32,12 +32,12 @@ public class AuthService {
         return ResponseEntity.ok().body(user);
     }
 
-    public ResponseEntity<String> loginUser(LoginRequest loginRequest){
-        Authentication authenticationRequest =
-                UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.getUsername(), loginRequest.getPassword());
-        Authentication authenticationResponse =
-                authenticationManager.authenticate(authenticationRequest);
-        return ResponseEntity.ok().body("Successful login");
-    }
+//    public ResponseEntity<String> loginUser(LoginRequest loginRequest){
+//        Authentication authenticationRequest =
+//                UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.getUsername(), loginRequest.getPassword());
+//        Authentication authenticationResponse =
+//                authenticationManager.authenticate(authenticationRequest);
+//        return ResponseEntity.ok().body("Successful login");
+//    }
 
 }

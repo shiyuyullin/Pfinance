@@ -42,4 +42,8 @@ public class FinancialService {
         return expenseRepository.save(expense);
     }
 
+    public List<Income> getIncomesByYearAndMonth(int month, int year){
+        return incomeRepository.findByMonthAndYear(month, year);
+    }
+
 }
