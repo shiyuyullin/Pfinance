@@ -4,12 +4,13 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
 @Data
-public class Income {
+public class Income implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

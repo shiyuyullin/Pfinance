@@ -3,11 +3,12 @@ package com.shiyu.Pfinance.Entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-public class Expense {
+public class Expense implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
