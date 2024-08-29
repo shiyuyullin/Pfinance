@@ -1,6 +1,6 @@
 package com.shiyu.Pfinance.Controller;
 
-import com.shiyu.Pfinance.Entity.User;
+import com.shiyu.Pfinance.Entity.Customer;
 import com.shiyu.Pfinance.Service.AuthService;
 import com.shiyu.Pfinance.dto.RegistrationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,9 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-
-
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody RegistrationRequest request){
-        return authService.registerUser(request);
+    public ResponseEntity<Customer> register(@RequestBody RegistrationRequest request){
+        return authService.registerCustomer(request);
     }
 
 

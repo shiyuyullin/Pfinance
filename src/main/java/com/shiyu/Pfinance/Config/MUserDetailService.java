@@ -1,7 +1,7 @@
 package com.shiyu.Pfinance.Config;
 
-import com.shiyu.Pfinance.Entity.User;
-import com.shiyu.Pfinance.Repository.UserRepository;
+import com.shiyu.Pfinance.Entity.Customer;
+import com.shiyu.Pfinance.Repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,18 +14,18 @@ import java.util.Optional;
 public class MUserDetailService implements UserDetailsService {
 
     @Autowired
-    private UserRepository userRepository;
+    private CustomerRepository customerRepository;
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findByUsername(username);
-        if(user.isPresent()){
-            User userObj = user.get();
+        Optional<Customer> customer = customerRepository.findByUsername(username);
+        if(customer.isPresent()){
+            Customer customerObj = customer.get();
             return org.springframework.security.core.userdetails.User.builder()
-                    .username(userObj.getUsername())
-                    .password(userObj.getPassword())
-                    .roles(getRoles(userObj))
+                    .username(customerObj.getUsername())
+                    .password(customerObj.getPassword())
+                    .roles(getRoles(customerObj))
                     .build();
         }
         else{
@@ -33,8 +33,8 @@ public class MUserDetailService implements UserDetailsService {
         }
     }
 
-    private String[] getRoles(User user){
-        if(user.getRole() == null) return new String[]{"USER"};
-        return user.getRole().split(",");
+    private String[] getRoles(Customer customer){
+        if(customer.getRole() == null) return new String[]{"USER"};
+        return customer.getRole().split(",");
     }
 }

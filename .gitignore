@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### bind mount-persisent data for postgredb in container
+/postgres-data

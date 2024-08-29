@@ -1,7 +1,7 @@
 package com.shiyu.Pfinance.Service;
 
-import com.shiyu.Pfinance.Entity.User;
-import com.shiyu.Pfinance.Repository.UserRepository;
+import com.shiyu.Pfinance.Entity.Customer;
+import com.shiyu.Pfinance.Repository.CustomerRepository;
 import com.shiyu.Pfinance.dto.RegistrationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +12,16 @@ import org.springframework.stereotype.Service;
 public class AuthService {
 
     @Autowired
-    private UserRepository userRepository;
+    private CustomerRepository customerRepository;
 
-    public ResponseEntity<User> registerUser(RegistrationRequest request){
-        User user = new User();
-        user.setUsername(request.getUsername());
-        user.setEmail(request.getEmail());
+    public ResponseEntity<Customer> registerCustomer(RegistrationRequest request){
+        Customer customer = new Customer();
+        customer.setUsername(request.getUsername());
+        customer.setEmail(request.getEmail());
         String encodedPassword = new BCryptPasswordEncoder().encode(request.getPassword());
-        user.setPassword(encodedPassword);
-        userRepository.save(user);
-        return ResponseEntity.ok().body(user);
+        customer.setPassword(encodedPassword);
+        customerRepository.save(customer);
+        return ResponseEntity.ok().body(customer);
     }
 
 

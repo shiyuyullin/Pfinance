@@ -17,7 +17,6 @@ public class PfinanceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PfinanceApplication.class, args);
 	}
-
 	@Bean
 	public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
 		RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()

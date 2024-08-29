@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IncomeRepository extends JpaRepository<Income, Long> {
 
-    List<Income> findByUserId(Long id);
+    List<Income> findByCustomerId(Long id);
 
     @Query("SELECT i FROM Income i WHERE MONTH(i.dateReceived) = :month AND YEAR(i.dateReceived) = :year")
     List<Income> findByMonthAndYear(@Param("month") int month, @Param("year") int year);
