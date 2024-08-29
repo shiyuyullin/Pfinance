@@ -23,7 +23,7 @@ public class Expense implements Serializable {
     private LocalDate dateIncurred;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "customer_id", nullable = false)
     @JsonBackReference
-    private User user;
+    private Customer customer;
 }

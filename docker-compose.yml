@@ -1,5 +1,25 @@
 services:
   redis:
     image: redis:7.4.0
+    restart: on-failure
     ports:
-      - "6379:6379"
+      - 6379:6379
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: pfinanceDB
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
