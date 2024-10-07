@@ -1,6 +1,7 @@
 package com.shiyu.Pfinance.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,6 +21,7 @@ public class Income implements Serializable {
 
     private BigDecimal amount;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateReceived;
 
     @ManyToOne

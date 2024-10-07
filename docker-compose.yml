@@ -5,6 +5,15 @@ services:
     ports:
       - 6379:6379
 
+  rabbitmq:
+    container_name: pfinance-rabbit
+    image: rabbitmq:latest
+    environment:
+      - RABBITMQ_DEFAULT_PASS=secret
+      - RABBITMQ_DEFAULT_USER=myuser
+    ports:
+      - 5672:5672
+
   db:
     image: postgres:latest
     restart: always
